@@ -1,7 +1,7 @@
 import '../blocks/popup/_opened/popup_opened.css';
 import React from 'react';
 
-function PopupWithForm({ children, name, title, isOpen, onSubmit, onUpdateUser, onUpdateAvatar, onAddPlace,
+function PopupWithForm({ children, name, title, isOpen, onSubmit,
     onClose, buttonText, type, onCloseOverlay }) {
     return (
         <div className={`popup popup_type_${name} ${isOpen ? 'popup_opened' : ''}`}
@@ -11,7 +11,7 @@ function PopupWithForm({ children, name, title, isOpen, onSubmit, onUpdateUser, 
                     onClick={e => e.stopPropagation()}>{/*чтобы не закрывалось при клике на саму форму*/}
                     <h2 className="popup__title">{title}</h2>
                     {children}
-                    <button id={"save"} type={type} className={"popup__button"}
+                    <button type={type} className={"popup__button"}
                     >{buttonText}</button>
                 </form>
                 <button id={"close-popup-button"} type={"button"} aria-label={"Закрыть"}

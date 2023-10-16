@@ -14,7 +14,7 @@ export class Api {
   _request(url, options) {
     return fetch(url, options).then(this._getResponse)
   }
-
+  
   //инициировать карточки //получение данных с сервера
   getInitialCards() {//getAllToddos
     return this._request(`${this._url}/cards`, { headers: this._headers })

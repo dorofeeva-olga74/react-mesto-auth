@@ -5,7 +5,6 @@
   background-image: url(./../../../../images/plus-sm.svg);
   border-width: 2px;
   border-radius: 2px;
-
 }
 
 @media screen and (max-width:1024px) {
@@ -13,7 +12,7 @@
     padding: 17px 133px;
     margin: 36px 19px 0 19px;
     background-image: url(./../../../../images/plus-big.svg);
-    min-width: 282px;
+    min-width: 230px;
     max-width: calc(100% - 2*19px);
   }
 }
@@ -21,5 +20,6 @@
 @media screen and (max-width:320px) {
   .profile__button_add_card {
     margin: 30px 19px 0 19px;
+    padding: 0;
   }
 }

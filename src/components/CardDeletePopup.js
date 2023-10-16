@@ -5,8 +5,8 @@ export default function CardDeletePopup(props) {
 
   return (
     <div className={`popup popup_type_delete-card-form ${isOpen ? 'popup_opened' : ''}`}
-      onMouseDown={onCloseOverlay} onClick={e => e.stopPropagation()}>{/*чтобы не закрывалось при клике на саму форму*/}
-      <div className={`popup__form`}>
+      onClick={onCloseOverlay}>
+      <div className={`popup__form`} onClick={e => e.stopPropagation()}>{/*чтобы не закрывалось при клике на саму форму*/}
         <div className="popup__container">
           <h2 className="popup__title">Вы уверены?</h2>
           <button onClick={handleCardDelete} type={'button'} className={"popup__button"}
