@@ -19,37 +19,32 @@ export class Api {
   getInitialCards() {//getAllToddos
     return this._request(`${this._url}/cards`, { headers: this._headers })
   }
-  //получение данных пользователя с сервера
-  getUserCardsData() {
-    return fetch(`${this._url}/users/me`, {
-      headers: this._headers,
-    }).then(this._getResponse);//response - ответ
-  }
+  
   //удалить карточку
   deleteCardApi(id) {
-    const obj = {
+    const options = {
       headers: this._headers,
       method: 'DELETE'
     }
-    return this._request(`${this._url}/cards/${id}`, obj)
+    return this._request(`${this._url}/cards/${id}`, options)
   }
   //создать карточку
-  creatCardApi(data) {
-    const obj = {
+  createCardApi(data) {
+    const options = {
       headers: this._headers,
       method: 'POST',
       body: JSON.stringify(data)
     }
-    return this._request(`${this._url}/cards`, obj)
+    return this._request(`${this._url}/cards`, options)
   }
   /*профиль*/
   //получение данных пользователя с сервера
-  getUserCardsData() {
+  getProfileInfo() {
     return this._request(`${this._url}/users/me`, { headers: this._headers })
   }
   //отправка данных на сервер   
   changeUserData(data) {
-    const obj = {
+    const options = {
       headers: this._headers,
       method: 'PATCH',
       body: JSON.stringify({
@@ -58,32 +53,32 @@ export class Api {
         avatar: data.avatar,
       })
     }
-    return this._request(`${this._url}/users/me`, obj)
+    return this._request(`${this._url}/users/me`, options)
   }
   //отправка данных на сервер   
   changeAvatarUrl(data) {
-    const obj = {
+    const options = {
       headers: this._headers,
       method: 'PATCH',
       body: JSON.stringify({ avatar: data.avatar })
     }
-    return this._request(`${this._url}/users/me/avatar`, obj)
+    return this._request(`${this._url}/users/me/avatar`, options)
   }
   //Метод  запроса последней версии лайка
   addLikeCardData(cardId) {
-    const obj = {
+    const options = {
       headers: this._headers,
       method: 'PUT'
     }
-    return this._request(`${this._url}/cards/${cardId}/likes`, obj)
+    return this._request(`${this._url}/cards/${cardId}/likes`, options)
   }
   //удаление лайка с карточки    
   deleteLikeCardData(cardId) {
-    const obj = {
+    const options = {
       headers: this._headers,
       method: 'DELETE'
     }
-    return this._request(`${this._url}/cards/${cardId}/likes`, obj)
+    return this._request(`${this._url}/cards/${cardId}/likes`, options)
   }
 
   // //инициировать карточки //получение данных с сервера
@@ -101,7 +96,7 @@ export class Api {
   //   }).then(this._getResponse);
   // }
   // //создать карточку
-  // creatCardApi(data) {
+  // createCardApi(data) {
   //   return fetch(`${this._url}/cards`, { //возврат fetch всегда промис
   //     headers: this._headers,
   //     method: 'POST',
@@ -110,7 +105,7 @@ export class Api {
   // }
   // /*профиль*/
   // //получение данных пользователя с сервера
-  // getUserCardsData() {
+  // getProfileInfo() {
   //   return fetch(`${this._url}/users/me`, {
   //     headers: this._headers,
   //   }).then(this._getResponse);//response - ответ
@@ -119,7 +114,7 @@ export class Api {
   //Метод находит id пользователя в хранилище
   // getCurrentUser() {
   //   //console.log(res)
-  //   this.getUserCardsData(_id)
+  //   this.getProfileInfo(_id)
   //     .then((response) => {
   //       localStorage.setItem('userId', response?._id);
   //       return response;

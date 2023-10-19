@@ -10,7 +10,7 @@ const getResponse = (res) => {
 }
 
 // Регистрация пользователя:
-export const registration = async (data) => {//data /* здесь должны быть параметры */
+export const register = async (data) => {//data /* здесь должны быть параметры */
     const res = await fetch(`${BASE_URL}signup`, {
         method: "POST",
         headers: {
@@ -23,7 +23,7 @@ export const registration = async (data) => {//data /* здесь должны �
     return getResponse(res);
 };
 //Авторизация пользователя:
-export const authorization = async (data) => {
+export const authorize = async (data) => {
     const res = await fetch(`${BASE_URL}signin`, {
         method: "POST",
         headers: {

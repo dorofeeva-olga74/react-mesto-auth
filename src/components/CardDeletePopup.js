@@ -1,20 +1,16 @@
 import React from 'react';
+import PopupWithForm from "./PopupWithForm";
 
-export default function CardDeletePopup(props) {
-  const { isOpen, onClose, onCloseOverlay, handleCardDelete } = props;
-
+export default function CardDeletePopup({ isOpen, onClose, onCloseOverlay, isLoading, handleCardDelete }) {
   return (
-    <div className={`popup popup_type_delete-card-form ${isOpen ? 'popup_opened' : ''}`}
-      onClick={onCloseOverlay}>
-      <div className={`popup__form`} onClick={e => e.stopPropagation()}>{/*чтобы не закрывалось при клике на саму форму*/}
-        <div className="popup__container">
-          <h2 className="popup__title">Вы уверены?</h2>
-          <button onClick={handleCardDelete} type={'button'} className={"popup__button"}
-          >Да</button>
-        </div>
-        <button id={"close-popup-button"} type={"button"} aria-label={"Закрыть"}
-          onClick={onClose} className={"popup__close-button"} />
-      </div>
-    </div>
+    <PopupWithForm
+      name={"delete-card-form"}
+      title={"Вы уверены?"}
+      buttonText={isLoading ? "Удаление..." : "Да"}
+      isOpen={isOpen}
+      onClose={onClose}
+      onCloseOverlay={onCloseOverlay}
+      onSubmit={handleCardDelete}
+    />
   );
 }
