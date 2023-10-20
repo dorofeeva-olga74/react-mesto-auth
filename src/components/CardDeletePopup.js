@@ -2,6 +2,11 @@ import React from 'react';
 import PopupWithForm from "./PopupWithForm";
 
 export default function CardDeletePopup({ isOpen, onClose, onCloseOverlay, isLoading, handleCardDelete }) {
+  
+  function handleSubmit(e) {
+    e.preventDefault();
+    handleCardDelete(); 
+  }  
   return (
     <PopupWithForm
       name={"delete-card-form"}
@@ -10,7 +15,7 @@ export default function CardDeletePopup({ isOpen, onClose, onCloseOverlay, isLoa
       isOpen={isOpen}
       onClose={onClose}
       onCloseOverlay={onCloseOverlay}
-      onSubmit={handleCardDelete}
+      onSubmit={handleSubmit}
     />
   );
 }
