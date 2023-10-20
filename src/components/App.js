@@ -16,7 +16,6 @@ import AddPlacePopup from "./AddPlacePopup.js";
 import CardDeletePopup from "./CardDeletePopup.js";
 import InfoTooltip from "./InfoTooltip.js";
 import ProtectedRoute from "./ProtectedRoute.js";
-import useLocalStorage from "../hooks/useLocalStorage.js";
 
 function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
@@ -35,7 +34,6 @@ function App() {
   const [isInfoTooltipOpened, setIsInfoTooltipOpened] = useState(false);
   const [isInfoTooltipStatus, setIsInfoTooltipStatus] = useState(false);
   const [userEmail, setUserEmail] = useState("");
-  const [localStorage, setLocalStorage] = useLocalStorage({});
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -199,10 +197,7 @@ function App() {
   const handleLoginSubmit = async (data) => {
     try {
       const { token } = await authorize(data);
-      setLocalStorage((prev) => ({
-        ...prev,
-        token,
-      }));
+      localStorage.setItem('token', token);
       setIsLoggedIn(true);
       setUserEmail(data.email);
       navigate("/");
@@ -214,8 +209,9 @@ function App() {
   }
   //ПРОВЕРКА ТОКЕНА
   useEffect(() => {
-    if (localStorage.token) {
-      checkToken(localStorage.token)
+    const token = localStorage.getItem('token');
+    if (token) {
+      checkToken(token)
         .then((data) => {
           setIsLoggedIn(true);
           setUserEmail(data.data.email);
@@ -226,10 +222,7 @@ function App() {
   }, [])
   //ВЫХОД
   const handleExitUser = () => {
-    setLocalStorage((prev) => ({
-      ...prev,
-      token: null
-    }))
+    localStorage.removeItem('token');
     setIsLoggedIn(false);
     setUserEmail('');
     navigate("/sign-in");
