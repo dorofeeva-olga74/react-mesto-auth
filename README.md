@@ -31,7 +31,7 @@
 ## Инструкция (Как установить и запустить проект):
 
 - Клонировать репозиторий:
-  git clone https://github.com/endjoyer/react-mesto-auth
+  git clone https://github.com/dorofeeva-olga74/react-mesto-auth.git
 - Установить зависимости:
   npm install
 - Собрать проект:
@@ -39,6 +39,5 @@
 - Запустить проект на локальном сервере:
   npm run start
 
-## Ссылка на репозиторий:
-
-https://github.com/dorofeeva-olga74/react-mesto-auth.git
+  ## Статус проекта
+  завершен
